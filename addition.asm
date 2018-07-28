@@ -15,4 +15,3 @@ main:
 	push msg
 	call printf
 	add esp,8
-	;hiiiiiiiiii
