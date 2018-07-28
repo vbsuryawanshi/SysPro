@@ -1,0 +1,18 @@
+section .data
+	a dd 10
+	b dd 20
+section. bss
+	n resd 1
+section. text
+	global main
+	extern printf,scanf
+main:
+	mov eax,dword[a]
+	mov edx,dword[b]
+
+	add eax,edx
+
+	push eax
+	call printf
+	add esp,4
+	

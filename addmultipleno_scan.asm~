@@ -1,0 +1,65 @@
+section .data
+	msg db "Addition is %d",10,0
+	msg1 db "Enter the value of n:",0
+	acc db "%d",0
+section .bss
+	n resd 1
+	arr resd 100
+	ip resd 1
+	sum resd 1
+;	four resd 1
+;	vinc resd 1
+section .text
+	global main
+	extern printf,scanf
+main:	push msg1
+	call printf
+	add esp,4
+	push n
+	push acc
+	call scanf
+	add esp,8
+	
+	xor ecx,ecx
+;	xor esi,esi
+loop:	mov esi,arr
+	cmp ecx,dword[n]
+	je calculate
+	mov eax,4
+	mul ecx
+	add esi,eax
+	push ecx
+	push ip
+	push acc
+	call scanf
+;	mov ecx,dword[vinc]
+	add esp,8
+	pop ecx
+	mov edx,dword[ip]
+	mov dword[esi],edx
+	inc ecx
+;	mov dword[vinc],ecx
+	jmp loop
+	
+calculate:
+;	mov dword[sum],0
+;	mov edx,dword[sum]
+	xor edx,edx
+again:	cmp ecx,2
+	je end
+	push ecx
+	mov esi,arr
+	mov eax,4
+	mul ecx
+	add esi,eax
+	add edx,dword[esi]
+	push edx
+	pop ecx
+	dec ecx
+	pop edx
+;	jmp end
+
+end:	push edx	
+	push msg
+	call printf
+	add esp,8
