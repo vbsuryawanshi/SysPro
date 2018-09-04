@@ -1,0 +1,63 @@
+     1                                  	section .data
+     2 00000000 09                      	a db 9
+     3                                  	section .text
+     4                                  	global main
+     5                                  	
+     6                                  main:
+     7 00000000 B800000000              mov eax,000
+     8 00000005 B901000000              mov ecx,001
+     9 0000000A BA0A000000              mov edx,010
+    10 0000000F BB0B000000              mov ebx,011
+    11 00000014 BC64000000              mov esp,100
+    12 00000019 BD65000000              mov ebp,101
+    13 0000001E BE6E000000              mov esi,110
+    14 00000023 BF6F000000              mov edi,111
+    15                                  	 
+    16 00000028 890D[00000000]          mov dword[a],ecx
+    17                                  
+    18 0000002E 89C8                    mov eax,ecx
+    19 00000030 89C9                    mov ecx,ecx
+    20 00000032 89CA                    mov edx,ecx
+    21 00000034 89CB                    mov ebx,ecx
+    22 00000036 89CC                    mov esp,ecx
+    23 00000038 89CD                    mov ebp,ecx
+    24 0000003A 89CE                    mov esi,ecx
+    25 0000003C 89CF                    mov edi,ecx
+    26                                  
+    27                                  
+    28 0000003E B803000000              mov eax,3
+    29 00000043 B903000000              mov ecx,3
+    30 00000048 BA03000000              mov edx,3
+    31 0000004D BB03000000              mov ebx,3
+    32 00000052 BC03000000              mov esp,3
+    33 00000057 BD03000000              mov ebp,3
+    34 0000005C BE03000000              mov esi,3
+    35 00000061 BF03000000              mov edi,3
+    36                                  
+    37 00000066 A1[00000000]            mov eax,dword[a]
+    38 0000006B 8B0D[00000000]          mov ecx,dword[a]
+    39 00000071 8B15[00000000]          mov edx,dword[a]
+    40 00000077 8B1D[00000000]          mov ebx,dword[a]
+    41 0000007D 8B25[00000000]          mov esp,dword[a]
+    42 00000083 8B2D[00000000]          mov ebp,dword[a]
+    43 00000089 8B35[00000000]          mov esi,dword[a]
+    44 0000008F 8B3D[00000000]          mov edi,dword[a]
+    45                                  
+    46 00000095 C705[00000000]0A00-     mov dword[a],10
+    46 0000009D 0000               
+    47 0000009F 890D[00000000]          mov dword[a],ecx
+    48 000000A5 8915[00000000]          mov dword[a],edx
+    49 000000AB 891D[00000000]          mov dword[a],ebx
+    50 000000B1 8925[00000000]          mov dword[a],esp
+    51 000000B7 892D[00000000]          mov dword[a],ebp
+    52 000000BD 8935[00000000]          mov dword[a],esi
+    53 000000C3 893D[00000000]          mov dword[a],edi
+    54                                  
+    55 000000C9 8B0458                  mov eax,dword[eax+ebx*2]
+    56 000000CC 8B0C59                  mov ecx,dword[ecx+ebx*2]
+    57 000000CF 8B145A                  mov edx,dword[edx+ebx*2]
+    58 000000D2 8B1C5B                  mov ebx,dword[ebx+ebx*2]
+    59 000000D5 8B245C                  mov esp,dword[esp+ebx*2]
+    60 000000D8 8B6C5D00                mov ebp,dword[ebp+ebx*2]
+    61 000000DC 8B345E                  mov esi,dword[esi+ebx*2]
+    62 000000DF 8B3C5F                  mov edi,dword[edi+ebx*2]

@@ -1,0 +1,28 @@
+section .data
+	First db "This is the string",0
+	Second db "This is the another string",10,0
+;	len equ $-First
+	
+section .text
+	global main	
+main:
+;	mov ecx,len
+	xor ecx,ecx
+	mov eax,First
+pqr:	cmp byte[eax],' '
+	push eax
+	jz tst
+	inc ecx
+	pop eax
+	inc eax
+	jmp pqr
+
+tst:	
+	
+
+	pop eax
+	mov edx,ecx
+	mov ecx,eax	
+	mov eax,4
+	mov ebx,1
+	int 0x80

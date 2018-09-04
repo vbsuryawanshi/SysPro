@@ -49,12 +49,20 @@ again:	mov esi,arr
 	mul ecx
 	add esi,eax
 	cmp edi,dword[esi]
-	ja end    			
+	jg reasign    			
 	inc ecx
 	dec ebx
 	mov edi,dword[esi]
 	cmp ebx,0
 	jne again
+	jmp end
+
+reasign:
+	inc ecx
+	dec ebx
+	cmp ebx,0
+	je end
+	jmp again
 	
 end:	push edi
 	push msg
