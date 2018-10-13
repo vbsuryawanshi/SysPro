@@ -1,0 +1,18 @@
+section .data
+abc dd Lit#0
+def dd Lit#1
+msg db Lit#2
+section .text
+	global main
+	extern printf
+		
+main:
+mov Reg#0,dword[Sym#0
+mov Reg#3,dword[Sym#1
+add Reg#1,dword[Sym#1
+mov Reg#0,Reg#1
+add Reg#0,Reg#3
+push Reg#0
+push Sym#2
+	call printf
+add Reg#4,Lit#3

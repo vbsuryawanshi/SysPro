@@ -1,0 +1,33 @@
+     1                                  section .data
+     2 00000000 546869732069732074-     	First db "This is the string",0
+     2 00000009 686520737472696E67-
+     2 00000012 00                 
+     3 00000013 546869732069732074-     	Second db "This is the another String",10,0
+     3 0000001C 686520616E6F746865-
+     3 00000025 7220537472696E670A-
+     3 0000002E 00                 
+     4 0000002F 0A00                    	nl db 10,0
+     5                                  
+     6                                  section .text
+     7                                  	global main
+     8                                  	extern puts
+     9                                  	
+    10                                  main:
+    11 00000000 B8[00000000]            	mov eax,First
+    12 00000005 31C9                    	xor ecx,ecx
+    13 00000007 40                      	inc eax
+    14 00000008 41                      	inc ecx
+    15 00000009 BB[13000000]            	mov ebx,Second
+    16 0000000E 01CB                    	add ebx,ecx
+    17 00000010 BA[00000000]            	mov edx,First
+    18 00000015 41                      	inc ecx
+    19 00000016 51                      	push ecx
+    20 00000017 31C0                    	xor eax,eax
+    21 00000019 4B                      	dec ebx
+    22 0000001A 42                      	inc edx
+    23 0000001B 59                      	pop ecx
+    24 0000001C 89CA                    	mov edx,ecx
+    25 0000001E B804000000              	mov eax,4
+    26 00000023 BB01000000              	mov ebx,1
+    27 00000028 B9[00000000]            	mov ecx,First
+    28 0000002D CD80                    	int 0x80
